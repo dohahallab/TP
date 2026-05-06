@@ -1,0 +1,93 @@
+### Categories
+GET http://localhost:3003/categories
+
+POST http://localhost:3003/categories
+Content-Type: application/json
+
+{
+    "nom": "Électronique",
+    "description": "Produits électroniques"
+}
+
+POST http://localhost:3003/categories
+Content-Type: application/json
+
+{
+    "nom": "Vêtements",
+    "description": "Mode et accessoires"
+}
+
+### Products
+GET http://localhost:3003/products
+
+GET http://localhost:3003/products?category=1&minPrice=10&page=1&limit=5
+
+GET http://localhost:3003/products/1
+
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "nom": "Smartphone XYZ",
+    "description": "Dernier modèle",
+    "prix": 599.99,
+    "stock": 50,
+    "categoryId": 1
+}
+
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "nom": "T-Shirt Noir",
+    "description": "100% coton",
+    "prix": 19.99,
+    "stock": 100,
+    "categoryId": 2
+}
+
+PUT http://localhost:3003/products/1
+Content-Type: application/json
+
+{
+    "nom": "Smartphone XYZ Pro",
+    "prix": 699.99,
+    "stock": 45,
+    "categoryId": 1
+}
+
+### Orders - Lister toutes les commandes
+GET http://localhost:3003/orders
+
+### Orders - Créer une commande
+POST http://localhost:3003/orders
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "items": [
+        {"productId": 1, "quantite": 2},
+        {"productId": 2, "quantite": 3}
+    ]
+}
+
+### Orders - Voir une commande spécifique
+GET http://localhost:3003/orders/1
+
+### Orders - Changer le statut
+PATCH http://localhost:3003/orders/1/status
+Content-Type: application/json
+
+{
+    "status": "CONFIRMED"
+}
+
+PATCH http://localhost:3003/orders/1/status
+Content-Type: application/json
+
+{
+    "status": "SHIPPED"
+}
+
+### Stats
+GET http://localhost:3003/orders/stats/all
